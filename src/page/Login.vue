@@ -54,6 +54,7 @@ export default{
 			}
 			button{
 				display: block;
+				border-radius: 20px;
 				margin: 10% auto;
 			}
 		}

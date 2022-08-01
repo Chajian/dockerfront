@@ -32,6 +32,13 @@ const router = VueRouter.createRouter({
   history: VueRouter.createWebHashHistory(),
   routes, // short for `routes: routes`
 })
+router.beforeEach((to, from, next) => {
+  if (to.path !== '/login' && !localStorage.token) {
+    return next('/login')
+  }
+   next()
+})
+
 var app = createApp(App)
 app.prop
 app.use(router)
