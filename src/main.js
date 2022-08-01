@@ -32,6 +32,7 @@ const router = VueRouter.createRouter({
   history: VueRouter.createWebHashHistory(),
   routes, // short for `routes: routes`
 })
+// 登录拦截
 router.beforeEach((to, from, next) => {
   if (to.path !== '/login' && !localStorage.token) {
     return next('/login')
