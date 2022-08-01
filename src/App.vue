@@ -2,29 +2,10 @@
 export default{
 	data(){
 		return{
-			url: '/src/assets/img/v2_rfar59.jpg'
 		}
 	},
 	methods:{
-		handleSelect(index,path){
-			switch(index){
-				case '1':
-				this.$router.push('/resource/manager')
-				break;
-				
-				case '2':
-				this.$router.push('/personal')
-				break;
-				
-				case '3':
-				this.$router.push('/container/create')
-				break;
-				
-				case '4':
-				this.$router.push('/images')
-				break;
-			}
-		}
+		
 	},
 	
 }
@@ -32,7 +13,7 @@ export default{
 
 <template>
 	<div id="app">
-		<div class="top">
+		<!-- <div class="top">
 			<el-image  style="width: 50px; height: 50px;border-radius: 25px;" :src="url" fit="fill"/>
 		</div>
 	    <div>
@@ -47,7 +28,7 @@ export default{
 				<el-menu-item index="3">容器创建</el-menu-item>
 				<el-menu-item index="4">我的镜像</el-menu-item>
 			</el-menu>
-		</div>
+		</div> -->
 	  <!-- 路由出口 -->
 	  <!-- 路由匹配到的组件将渲染在这里 -->
 	  <router-view class="main"></router-view>
@@ -66,16 +47,16 @@ export default{
   // margin-top: 60px;
   background-color: rgb(227 228 238);
 }
-.main{
-	margin-top: 20px;
-	margin-left: 15px;
-	margin-right: 15px;
-	height: 100%;
-	background-color: #ffffff;
-}
-.top{
-	background-color: rgb(64 116 226);
-	width: 100%;
-	height: 50px;
-}
+// .main{
+// 	margin-top: 20px;
+// 	margin-left: 15px;
+// 	margin-right: 15px;
+// 	height: 100%;
+// 	background-color: #ffffff;
+// }
+// .top{
+// 	background-color: rgb(64 116 226);
+// 	width: 100%;
+// 	height: 50px;
+// }
 </style>

@@ -1,29 +1,68 @@
 <template>
-	<div style="background-color: #ffffff;">
-		<CardItem fTitle="我的世界java" fcontext="cpu:1核" fcontext2='内存4g' fcontext3='硬盘4G' fbottom="Running">
-			
-		</CardItem>
+	<div class="top">
+		<el-image  style="width: 50px; height: 50px;border-radius: 25px;" :src="url" fit="fill"/>
 	</div>
-	
-	<!-- <view>
-		<view>
-			
-		</view>
-			<view></view>
-			<view></view>
-	</view> -->
+	<div>
+		<el-menu
+		:default-active="activeIndex"
+		class="el-menu-demo"
+		mode="horizontal"
+		@select="handleSelect"
+		>
+			<el-menu-item index="1">资源管理</el-menu-item>
+			<el-menu-item index="2">个人页面</el-menu-item>
+			<el-menu-item index="3">容器创建</el-menu-item>
+			<el-menu-item index="4">我的镜像</el-menu-item>
+		</el-menu>
+	</div>
+	<!-- 路由出口 -->
+	<!-- 路由匹配到的组件将渲染在这里 -->
+	<router-view class="main"></router-view>
 </template>
 
 <script>
-import CardItem from '/src/components/CardItem.vue'
 export default{
-	components: {
-		CardItem
+	data(){
+		return{
+			url: '/src/assets/img/v2_rfar59.jpg'
+		}
+	},
+	methods:{
+		handleSelect(index,path){
+			switch(index){
+				case '1':
+				this.$router.push('/resource/manager')
+				break;
+				
+				case '2':
+				this.$router.push('/personal')
+				break;
+				
+				case '3':
+				this.$router.push('/container/create')
+				break;
+				
+				case '4':
+				this.$router.push('/images')
+				break;
+			}
+		}
 	}
-	
 	
 }
 </script>
 
-<style>
+<style lang="less" scoped>
+.main{
+	margin-top: 20px;
+	margin-left: 15px;
+	margin-right: 15px;
+	height: 100%;
+	background-color: #ffffff;
+}
+.top{
+	background-color: rgb(64 116 226);
+	width: 100%;
+	height: 50px;
+}
 </style>

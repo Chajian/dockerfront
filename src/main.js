@@ -7,17 +7,21 @@ import ElementPlus from 'element-plus'
 import ImageManager from './page/ImageManger.vue'
 import CreateContainer from './page/CreateContainer.vue'
 import ResourceManager from './page/ResourceManager.vue'
+import Login from './page/Login.vue'
 import Personal from './page/Personal.vue'
 import request from './assets/js/axios.js'
 import 'element-plus/dist/index.css'
 
 // router路由
 const routes = [
-	{ path: '/images', component: ImageManager },
-	{ path: '/test', component: HelloWorld },
-	{ path: '/container/create',component: CreateContainer},
-	{ path: '/resource/manager',component: ResourceManager},
-	{ path: '/personal',component: Personal}
+	{ path: '/' ,component: Index,children:[
+		{ path: '/images', component: ImageManager },
+		{ path: '/test', component: HelloWorld },
+		{ path: '/container/create',component: CreateContainer},
+		{ path: '/resource/manager',component: ResourceManager},
+		{ path: '/personal',component: Personal}
+	]},
+	{ path: '/login', component: Login}
 ]
 
 // 3. Create the router instance and pass the `routes` option
