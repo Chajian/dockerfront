@@ -6,9 +6,9 @@
 	<div class="login-bottom">
 		<div class="login-view-card">
 			<span>{{welcome}}</span>
-			<input />
-			<input />
-			<el-button>
+			<input v-model="account" />
+			<input v-model="password"/>
+			<el-button @click="test">
 				登陆
 			</el-button>
 		</div>
@@ -17,12 +17,44 @@
 </template>
 
 <script>
+import api from '../assets/js/api.js'
+import { JSEncrypt } from 'jsencrypt'
 export default{
 	data(){
 		return{
-			welcome: '欢迎来到xxx'
+			welcome: '欢迎来到xxx',
+			account: '',
+			password: ''
 		}
-	}
+	},
+	mounted() {
+		// this.test()
+	},
+	methods:{
+		test(){
+			
+			var that = this;
+			
+			var key = api.verify.getPublicKey().then(res=>{
+				if(res.code==200){
+					const encrypt = new JSEncrypt();
+					encrypt.setPublicKey(res.data);
+					var realpassword = encrypt.encrypt(that.password);// 加密后的字符串
+					console.log("密钥:"+res.data+"\n密码"+realpassword)
+					api.verify.login(that.account,realpassword).then(res=>{
+						if(res.code==200){
+							localStorage.setItem('token',res.data)
+							console.log("登录成功!")
+							this.$router.push('/')
+						}
+					})
+				}
+			})
+			
+		}
+	},
+	
+	 
 }
 </script>
 

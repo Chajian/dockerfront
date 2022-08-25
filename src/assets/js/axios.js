@@ -1,13 +1,13 @@
 import axios from 'axios'
 
 const request = axios.create({
-    baseURL: 'https://sg.maiyajia.com/api',
+    baseURL: 'http://192.168.0.107:8888',
     timeout: 6000,
     headers:{
-        // 'Content-Type': 'multipart/form-data',
-        // 'Access-Control-Allow-Origin': '*',
-        // 'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
-        // 'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept, Authorization,X-Request-With'
+        'Content-Type': 'multipart/form-data',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, PUT, DELETE',
+        'Access-Control-Allow-Headers': 'Origin, Content-Type, Accept, Authorization,X-Request-With'
     }
 })
 
