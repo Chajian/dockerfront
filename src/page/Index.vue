@@ -1,6 +1,6 @@
 <template>
 	<div class="top">
-		<el-image  style="width: 50px; height: 50px;border-radius: 25px;" :src="url" fit="fill"/>
+		<el-image @click="toPersonalPage()" style="width: 50px; height: 50px;border-radius: 25px;" :src="url" fit="fill"/>
 	</div>
 	<div>
 		<el-menu
@@ -13,6 +13,7 @@
 			<el-menu-item index="2">个人页面</el-menu-item>
 			<el-menu-item index="3">容器创建</el-menu-item>
 			<el-menu-item index="4">我的镜像</el-menu-item>
+			<el-menu-item v-if="isAdmin" index="5">管理员页面</el-menu-item>
 		</el-menu>
 	</div>
 	<!-- 路由出口 -->
@@ -24,7 +25,8 @@
 export default{
 	data(){
 		return{
-			url: '/src/assets/img/v2_rfar59.jpg'
+			url: '/src/assets/img/v2_rfar59.jpg',
+			isAdmin: true
 		}
 	},
 	methods:{
@@ -46,6 +48,9 @@ export default{
 				this.$router.push('/images')
 				break;
 			}
+		},
+		toPersonalPage(){
+			this.$router.push('/personal')
 		}
 	}
 	

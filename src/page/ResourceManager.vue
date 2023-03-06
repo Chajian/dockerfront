@@ -5,10 +5,10 @@
 				简单信息
 			</text>
 			<svg xmlns="http://www.w3.org/2000/svg" style="overflow: visible; filter: none;"><path d="M 0 0.5 L 1000 0.5" stroke="rgba(187,187,187,1)" stroke-width="1px" stroke-dasharray=""></path><path d="M 0 0.5 L 347 0.5" stroke="transparent" stroke-width="10" style="pointer-events: auto;"></path></svg>
-			<span>容器id:</span>
-			<span>容器名称:</span>
-			<span>容器状态:</span>
-			<span>cpu:</span>
+			<span>容器id:{{account}}</span>
+			<span>容器名称:{{name}}</span>
+			<span>容器状态:{{status}}</span>
+			<span>cpu:{{cpu}}</span>
 			<span style="margin-bottom: 40px;">内存:</span>
 			<span style="display: inline;">硬盘:</span>
 			<el-button type="primary">暂停</el-button>
@@ -34,6 +34,19 @@
 </template>
 
 <script>
+export default{
+	data(){
+		return{
+			account:'',
+			name:'',
+			status:'',
+			cpu:4
+		}
+	},
+	methods:{
+		
+	}
+}
 </script>
 
 <style lang="less" scoped>

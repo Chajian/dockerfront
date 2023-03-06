@@ -1,7 +1,7 @@
 <template>
 <div class="images">
 	<div class="image-top">
-		<span>我的docker镜像</span>
+		<span>我的docker容器</span>
 	</div>
 	<div class="image-content">
 		<el-button type="primary">新建</el-button>
