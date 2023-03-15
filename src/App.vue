@@ -1,14 +1,16 @@
 <template>
   <div id="app">
-    <rm></rm>
+    <!-- <rm></rm> -->
+    <cc></cc>
   </div>
 </template>
 
 <script>
 import rm from './pages/resourceManagement'
+import cc from './pages/ContainerCreation'
 export default {
   name: 'App',
-  components:{rm}
+  components:{rm,cc}
  
 }
 </script>
