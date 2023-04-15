@@ -23,7 +23,7 @@
 
 <script>
 export default {
-   name:'PersonalInfo',
+   name:'PersonInfo',
    data() {
   	return {
   	    	head_img:'./assets/navbar/avator.png',

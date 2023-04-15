@@ -19,7 +19,7 @@
           <img class="avator" @click="islogin"  src="../assets/navbar/avator.png" alt="">
         </span>
         <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-user">用户：{{ this.$store.state.username }}</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-user" @click="goPersonInfo">用户：{{ this.$store.state.username }}</el-dropdown-item>
             <el-dropdown-item icon="el-icon-help">套餐有效期：{{ expiration }}</el-dropdown-item>
             <el-dropdown-item divided icon="el-icon-s-promotion">退出</el-dropdown-item>
         </el-dropdown-menu>
@@ -39,6 +39,7 @@ export default {
 		}
 	},
 	methods:{
+      //判断是否已经登录状态
     islogin(){
       const isLogin = this.$store.state.isLogin
       console.log(isLogin);
@@ -48,8 +49,10 @@ export default {
         this.$router.push('/login');
       }
     },
-      //判断是否已经登录状态
- 
+    goPersonInfo(){
+      this.$router.push('/PersonInfo');
+    },
+    
 		handleSelect(index,path){
 			switch(index){
 				case '1':

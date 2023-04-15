@@ -7,7 +7,7 @@ import Hardware from '@/pages/Hardware'
 import Order from '@/pages/Order'
 import Images from '@/pages/Images'
 import Package from '@/pages/Package'
-import PersonalInfo from '@/pages/PersonalInfo'
+import PersonInfo from '@/pages/PersonInfo'
 import resourceManagement from '@/pages/resourceManagement'
 
 Vue.use(VueRouter)
@@ -28,7 +28,7 @@ const routes = [
             {path:'order',component:Order},
             {path:'images',component:Images},
             {path:'package',component:Package},
-            {path:'personalInfo',component:PersonalInfo},
+            {path:'personInfo',component:PersonInfo},
             {path:'resourceManagement',component:resourceManagement},
         ]
     },

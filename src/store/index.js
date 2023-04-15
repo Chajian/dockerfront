@@ -9,6 +9,7 @@ const store = new Vuex.Store({
       username: localStorage.getItem('username'),
       password:'',
       isLogin:localStorage.getItem('isLogin'),
+      packageData:''
   },
   mutations: {
     login(state,user){
@@ -16,6 +17,9 @@ const store = new Vuex.Store({
       state.password = user.password;
       state.isLogin = user.isLogin;
     },
+    packageAdd(state,packages){
+      state.packageData = packages;
+    }
   },
   getters: {
     getMessage(state) {
