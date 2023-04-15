@@ -1,22 +1,32 @@
 <template>
     <div class="container">
         <div class="title">CONTAINER</div>
-        <!-- 绑定v-for循环即可 -->
-        <div class="content-item">CPU: 4 Cores Intel Xeon Gold 6248R</div>
-        <div class="content-item">RAM: 1G</div>
-        <div class="content-item">Space: 20G SSD</div>
-        <div class="content-item">Bandwidth: 1G</div>
-        <div class="content-item">Port: 4078 8088 2040</div>
-        <div class="content-item">Status: running</div>
+        <ul>
+        <li class="content-item" v-for="(value, key) in containerInfo">
+		  {{ key }}: {{ value }}
+		</li>
+        </ul>
         <!-- 按钮 -->
-        <span class="btn config">config</span>
+        <div class="btn config">config</div>
         <span class="btn close">close</span>
     </div>
 </template>
 
 <script>
 export default {
-   name:'ResourceManage'
+   name:'ResourceManage',
+   data() {
+  	return {
+	    containerInfo: {
+  	    	cpu:'4 Cores Intel Xeon Gold 6248R',
+            ram:'1G',
+            space:'20G SSD',
+            bandwidth:'1G',
+            poty:'4078 8088 2040',
+            status:'running'
+    	}
+  	}
+	}
 }
 </script>
 
@@ -34,9 +44,11 @@ export default {
 .title{
     padding: 20px 0px;
 }
-
+ul{
+    margin-left:-35px ;
+}
 /* 容器详细信息 */
-.content-item{
+ul .content-item{
     width: 100%;
     height: 19px;
     margin-bottom:8px ;
@@ -45,7 +57,9 @@ export default {
     font-size: 14px;
     font-weight: 290;
     line-height: 19px;
+    list-style: none;
 }
+
 .btn{
     width: 156px;
     height: 34px;
@@ -59,7 +73,15 @@ export default {
 .config{
     background: rgb(70, 203, 48);
     margin:  30px 30px 0px 60%;
-    /* margin-right: 30px ; */
+    margin-right: 30px ;
+}
+.config:before{
+    content: url(../assets/resourceManage/setting.png);
+    display: block;
+    /* height: 10px;*/
+    width: 10px;
+    height: 10px;
+
 }
 .close{
     background: rgb(232, 122, 44);

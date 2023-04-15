@@ -1,29 +1,32 @@
 <template>
   <div id="app">
-    <nb/>
-    <pc/>
-    <crm/>
-    <!-- <rm></rm> -->
-    <!-- <cc></cc> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import nb from './components/NavBar'
-import pc from './components/PriceCard'
-import crm from './components/ResourceManage'
-import rm from './pages/resourceManagement'
-import cc from './pages/ContainerCreation'
 export default {
   name: 'App',
-  components:{nb,rm,cc,pc,crm}
- 
+  components: {
+    // router
+  },
 }
 </script>
 
-<style>
-body{
-  /* background-color: rgb(215, 210, 210); */
+<style lang="less">
+html,body,h3{
+  margin: 0;
+  padding: 0;
 }
-
+button{
+    padding: 4px 10px;
+    margin-left: 9px;
+    font-size: 12px;
+    box-sizing: border-box;
+    // border: 0.5px solid rgb(224, 223, 222);
+    border-radius: 6px;
+    // color: rgb(232, 122, 44);
+    color:#409EFF;
+    border: none;
+}
 </style>
