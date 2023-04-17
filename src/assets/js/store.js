@@ -3,7 +3,8 @@ import Vuex from 'vuex'
 export default new Vuex.Store({
   state: {
     count: 0,
-    vradio: 0
+    vradio: 0,
+    isLogin: false
   },
   mutations: {
     increment(state) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     setVradio(state, value) {
       state.vradio = value
+    },
+    SET_LOGIN_STATE(state, isLoggedIn) {
+      state.isLogin = isLoggedIn;
     }
   },
   actions: {
@@ -26,6 +30,14 @@ export default new Vuex.Store({
       setTimeout(() => {
         context.commit('setVradio', value)
       }, 1000)
+    },
+    login({ commit }) {
+      // do the login logic here
+      commit('SET_LOGIN_STATE', true);
+    },
+    logout({ commit }) {
+      // do the logout logic here
+      commit('SET_LOGIN_STATE', false);
     }
   },
   getters: {

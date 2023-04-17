@@ -73,8 +73,9 @@ export default {
     handleCommand(command) {
         if(command == 'goPersonInfo'){
           this.$router.push('/personInfo')
-        }else if(command == 'LoginOut'){
+        }else if(command == 'loginOut'){
           console.log("点击了退出");
+          this.$store.dispatch('logout');
           localStorage.removeItem('username')
         }
       }

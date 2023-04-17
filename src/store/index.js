@@ -10,7 +10,8 @@ const store = new Vuex.Store({
       password:'',
       isLogin:localStorage.getItem('isLogin'),
       packageData:JSON.parse(localStorage.getItem('packageData')),
-      hardwareData:''
+      hardwareData:'',
+      isLogin: false
   },
   mutations: {
     login(state,user){
@@ -23,6 +24,9 @@ const store = new Vuex.Store({
     },
     hardwareData(state,hardwareData){
       state.hardwareData = hardwareData;
+    },
+    SET_LOGIN_STATE(state, isLoggedIn) {
+      state.isLogin = isLoggedIn;
     }
   },
   getters: {
@@ -34,6 +38,16 @@ const store = new Vuex.Store({
       return state.isLogin;
     }
   },
+  actions: {
+    login({ commit }) {
+      // do the login logic here
+      commit('SET_LOGIN_STATE', true);
+    },
+    logout({ commit }) {
+      // do the logout logic here
+      commit('SET_LOGIN_STATE', false);
+    }
+  }
 });
 
 export default store;
