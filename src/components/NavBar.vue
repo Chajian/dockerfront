@@ -75,6 +75,7 @@ export default {
           this.$router.push('/personInfo')
         }else if(command == 'loginOut'){
           console.log("点击了退出");
+          //更新isLogin状态
           this.$store.dispatch('logout');
           localStorage.removeItem('username')
         }

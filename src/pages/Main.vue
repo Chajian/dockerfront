@@ -19,6 +19,8 @@ export default {
   components: {
     NavBar
   },
+  // 响应式获取isLogin，当isLogin更新，会自动更新ui
+  // 将isLogin存入store
   computed: {
     isLogin() {
       return this.$store.state.isLogin;

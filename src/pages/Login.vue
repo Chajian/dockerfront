@@ -33,6 +33,7 @@ export default {
                 alert('账号或密码不能为空');
             }else{
                 this.isLogin = !this.isLogin
+                //更新isLogin状态
                 this.$store.dispatch('login');
                 console.log(this.isLogin);
                 localStorage.setItem('username', this.username);

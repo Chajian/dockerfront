@@ -34,17 +34,20 @@ const store = new Vuex.Store({
       // 获取修饰后的name，第一个参数state为必要参数，必须写在形参上
       return `hello${state.username}`;
     },
+    //获取状态
     getLogin(state){
       return state.isLogin;
     }
   },
   actions: {
+    //登录行为
     login({ commit }) {
-      // do the login logic here
+    
       commit('SET_LOGIN_STATE', true);
     },
+    //登出行为
     logout({ commit }) {
-      // do the logout logic here
+      
       commit('SET_LOGIN_STATE', false);
     }
   }
