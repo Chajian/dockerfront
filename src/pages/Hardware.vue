@@ -19,43 +19,78 @@
           </el-select>
           <p class="content-title">Configure Server</p>
           <div class="configure-serve">
-            <div class="item"> <span class="item-title">CPU类型</span> <input type="text" v-model="cpu_type"></div>
-            <div class="item"> <span class="item-title">CPU内核</span> <input type="text" v-model="cpu_core"></div>
-            <div class="item"> <span class="item-title">网络速度（M）</span> <input type="text" v-model="speed"></div>
-            <div class="item"> <span class="item-title">磁盘大小（G）</span> <input type="text" v-model="disk"></div>
-             <div class="item"> <span class="item-title">HostName</span> <input type="text" v-model="hostname"></div>
-             <div class="item"><span class="item-title">Portforwarding</span><input type="text" v-model="port"></div>
+            <div class="item"> <span class="item-title">CPU类型</span><el-input type="text" v-model="hardwareData.cpu_type"/></div>
+            <div class="item"> <span class="item-title">CPU内核</span><el-input type="text" v-model="hardwareData.cpu_core"/></div>
+            <div class="item"> <span class="item-title">网络速度</span><el-input type="text" v-model="hardwareData.speed"/></div>
+            <div class="item"> <span class="item-title">磁盘大小</span><el-input type="text" v-model="hardwareData.disk"/></div>
+             <div class="item"> <span class="item-title">端口号 </span><el-input type="text" v-model="hardwareData.hostname"/></div>
+             <div class="item"><span class="item-title">Portforwarding</span><el-input type="text" v-model="port"/></div>
+             {{ hardwareData }}
          </div>
-          <p class="content-title">Cost</p>
+          <!-- <p class="content-title">Cost</p>
           <div class="cost">
               <span class="cost-title">Total Due Today:</span>
               <span class="price">{{price}}yuan</span>
-          </div>
+          </div> -->
           <button class="btn" @click="submit">> 提交</button>
       </div>
       
     </div>
   </template>
-  
+  <!-- hardwareData:[
+            {
+                title:'CPU类型',
+                hardware_id:'',
+            },
+            {
+                title:'CPU类型',
+                cpu_type:'',
+            },
+            {
+                title:'CPU内核',
+                cpu_core:'',
+            },
+             {
+                title:'网络速度',
+                speed:'',
+            },
+            {
+                title:'CPU内核',
+                disk:'',
+            },
+            {
+                title:'端口号',
+                port:'',
+            },
+   
+          ], -->
   <script>
   export default {
-      name:'Order',
+      name:'Hardware',
       data() {
         return {
           num:1,
           price:'4,80',
-          cpu_type:'',
-          cpu_core:'',
-          speed:'',
-          disk:'',
-          hostname:'',
-          port:'',
+          hardwareData:{
+            hardware_id:'',
+            cpu_type:'',
+            cpu_core:'',
+            speed:'',
+            disk:'',
+            hostname:'',
+            port:'',
+       
+          },
           options: [{
             value: '选项1',
             label: 'python'
           }, {
             value: '选项2',
             label: 'sql'
+          },
+          {
+            value: '选项2',
+            label: 'java'
           }],
           value: ''
         }
@@ -65,11 +100,8 @@
           console.log(value);
         },
         submit(value){
-          alert(this.cpu_core)
-          localStorage.getItem('cpu_type',this.cpu_type)
-          localStorage.getItem('cpu_core',this.cpu_core)
-          localStorage.getItem('speed',this.speed)
-          localStorage.getItem('disk',this.disk)
+            localStorage.setItem("hardwareData",JSON.stringify(this.hardwareData));
+            this.$store.commit('hardwareData',this.hardwareData)
         }
       }
   }

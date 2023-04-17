@@ -50,12 +50,12 @@ const router = new VueRouter({
 router.beforeEach( (to, from, next) => {
     const _to = localStorage.getItem('isLogin');
     //不需要登录的直接放行
-    if (to.meta.isLogin === false) {
+    if (to.meta.isLogin === false ) {
       next()
       //如果页面需要登录，且登录失效，进入登录页面
     } else if (!_to && to.path !== '/login') {
       next({
-        path: '/home'
+        path: '/login'
       })
     } else {
       next()

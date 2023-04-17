@@ -105,16 +105,9 @@ span,p{
     margin: 10px 0px 0px 160px;
 }
 
-/* .btn-purchase{
-    width: 32px;
-    height: 12px;
-    margin-left: 9px;
-    padding: 3px 19px;
-    font-size: 8px;
-    box-sizing: border-box;
-    border: 0.5px solid #409EFF;
-    border-radius: 6px;
-    color:#409EFF;
-} */
+.el-button{
+  padding:5px;
+  font-size: 12px;
+} 
 
 </style>

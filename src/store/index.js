@@ -9,7 +9,8 @@ const store = new Vuex.Store({
       username: localStorage.getItem('username'),
       password:'',
       isLogin:localStorage.getItem('isLogin'),
-      packageData:''
+      packageData:JSON.parse(localStorage.getItem('packageData')),
+      hardwareData:''
   },
   mutations: {
     login(state,user){
@@ -19,6 +20,9 @@ const store = new Vuex.Store({
     },
     packageAdd(state,packages){
       state.packageData = packages;
+    },
+    hardwareData(state,hardwareData){
+      state.hardwareData = hardwareData;
     }
   },
   getters: {
@@ -26,6 +30,9 @@ const store = new Vuex.Store({
       // 获取修饰后的name，第一个参数state为必要参数，必须写在形参上
       return `hello${state.username}`;
     },
+    getLogin(state){
+      return state.isLogin;
+    }
   },
 });
 

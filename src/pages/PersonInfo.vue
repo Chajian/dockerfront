@@ -2,31 +2,35 @@
     <div class="container">
        <div class="info">
         <div class="title">个人信息</div>
-        <img :src="{head_img}" alt="">
+        <img :src="head_img" class="avator">
         <ul>
         <li class="content-item">用户名称：{{ username }}</li>
         <li class="content-item">用户ID:{{ userId }}</li>
         <li class="content-item">最后登录时间：{{ last_ip }}</li>
         </ul>
         <!-- 按钮 -->
+        <button  @click="goModifyPassword">修改个人信息</button>
         <button  @click="goModifyPassword">修改密码</button>
        </div>
         <div class="packageInfo">
-            套餐信息
+            <div class="title">套餐信息</div>
             <ul>
-                <li class="content-item">已选购套餐:{{ packageinfo }}</li>
-                <li class="content-item">套餐有效期:{{ expiration }}</li>
+                <li class="content-item">已选购套餐:{{ packageData.type }}</li>
+                <li class="content-item">套餐信息:{{ packageData.description }}</li>
+                <li class="content-item">套餐购买时间:{{ packageData.created_at }}</li>
+                <li class="content-item">套餐有效期:{{ packageData.update_at }}</li>
             </ul>
         </div>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
    name:'PersonInfo',
    data() {
   	return {
-  	    	head_img:'./assets/navbar/avator.png',
+  	    	head_img:require('@/assets/img/userAvator.jpg'),
             username:'听风言语声',
             userId:'US12313',
             packageinfo:'100G 50M',
@@ -39,14 +43,18 @@ export default {
             this.$router.push('/modifyPassword')
         }
     },
+    computed:{
+        ...mapState(['packageData']),
+     },
+
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 /* contain样式 */
 .container{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 40px auto;
     padding: 0 23px;
     width: 956px;
@@ -63,6 +71,13 @@ ul{
 }
 .info{
 
+}
+.avator{
+    display: block;
+    width: 60px;
+    height: 60px;
+    border-radius:8px;
+    margin-left: 5px;
 }
 /* 容器详细信息 */
 ul .content-item{

@@ -1,16 +1,24 @@
 <template>
-<el-upload
-  class="upload-demo"
-  ref="upload"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :on-preview="handlePreview"
-  :on-remove="handleRemove"
-  :file-list="fileList"
-  :auto-upload="false">
-  <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
-  <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
-  <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-</el-upload>
+    <div class="upload">
+      <el-upload
+    class="upload-demo"
+    ref="upload"
+    action="https://jsonplaceholder.typicode.com/posts/"
+    :on-preview="handlePreview"
+    :on-remove="handleRemove"
+    :file-list="fileList"
+    :auto-upload="false">
+    <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
+    <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
+    <div slot="tip" class="el-upload__tip">选择你要上传的镜像，且不超过50G</div>
+  </el-upload>
+  <h3>已上传 </h3>
+  <el-card class="box-card">
+    {{ file }}
+    -------------------------------------------
+  {{fileList  }}
+</el-card>
+  </div>
 </template>
 <script>
   export default {
@@ -22,6 +30,7 @@
     methods: {
       submitUpload() {
         this.$refs.upload.submit();
+        console.log(file, fileList);
       },
       handleRemove(file, fileList) {
         console.log(file, fileList);
@@ -70,5 +79,18 @@ color: #E6A23C;
   .box-card {
     width: 250px;
     margin: 20px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+
+  .item {
+    padding: 18px 0;
+  }
+
+  .box-card {
+    width: 80%;
+    height: 600px;
   }
 </style>

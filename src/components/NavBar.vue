@@ -1,5 +1,5 @@
 <template>
-  <div class="nav" v-show="show">
+  <div class="nav">
     <div class="logo">LOGO</div>
       <el-menu
       :default-active="activeIndex"
@@ -14,14 +14,14 @@
 			<el-menu-item index="6">个人页面</el-menu-item>
 			<el-menu-item index="7">管理员页面</el-menu-item>
 		</el-menu>
-      <el-dropdown size="mini" >
+      <el-dropdown size="mini" @command="handleCommand" >
         <span class="el-dropdown-link">
-          <img class="avator" @click="islogin"  src="../assets/navbar/avator.png" alt="">
+          <img class="avator" :src="imageUrl" alt="">
         </span>
         <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item icon="el-icon-user" @click="goPersonInfo">用户：{{ this.$store.state.username }}</el-dropdown-item>
+            <el-dropdown-item icon="el-icon-user" command="goPersonInfo">用户：{{ this.$store.state.username }}</el-dropdown-item>
             <el-dropdown-item icon="el-icon-help">套餐有效期：{{ expiration }}</el-dropdown-item>
-            <el-dropdown-item divided icon="el-icon-s-promotion">退出</el-dropdown-item>
+            <el-dropdown-item divided icon="el-icon-s-promotion" command="loginOut">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
   </div>
@@ -32,26 +32,12 @@ export default {
     name:'NavBar',
     data(){
 		return{
-			url: '/src/assets/img/v2_rfar59.jpg',
+			imageUrl: require("../assets/img/userAvator.jpg"),
       username:'',
       expiration:'2024-05-23',
-      show:true
 		}
 	},
 	methods:{
-      //判断是否已经登录状态
-    islogin(){
-      const isLogin = this.$store.state.isLogin
-      console.log(isLogin);
-      if(isLogin){
-        console.log("你已经登录，无需再次登录")
-      }else{
-        this.$router.push('/login');
-      }
-    },
-    goPersonInfo(){
-      this.$router.push('/PersonInfo');
-    },
     
 		handleSelect(index,path){
 			switch(index){
@@ -76,7 +62,7 @@ export default {
 				break;
 
         case '6':
-				this.$router.push('/personalInfo')
+				this.$router.push('/personInfo')
 				break;
 
         case '7':
@@ -84,13 +70,18 @@ export default {
 				break;
 			}
 		},
-		toPersonalPage(){
-			this.$router.push('/personal')
-		}
+    handleCommand(command) {
+        if(command == 'goPersonInfo'){
+          this.$router.push('/personInfo')
+        }else if(command == 'LoginOut'){
+          console.log("点击了退出");
+          localStorage.removeItem('username')
+        }
+      }
 
-    }
-	
-}
+    },
+
+  }
 </script>
 
 <style scoped>
@@ -118,13 +109,14 @@ export default {
         line-height: 21px;
     }
     /* 用户头像 */
-.avator{
+.avator {
     display: block;
     margin:auto 0;
+    border-radius: 8px;
     width: 42x;
     height: 42px;
     margin-right: 20px;
-    padding-top: 8px;
+    margin-top: 8px;
 }
 .el-dropdown-item:hover{
     cursor: pointer;

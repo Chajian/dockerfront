@@ -24,22 +24,27 @@ export default {
         return {
             username:'cxx',
             password:'123',
-            isLogin:false,
+            isLogin:false
             }
     },
     methods: {
         login(){
-            this.isLogin = !this.isLogin
-            localStorage.setItem('username', this.username);
-            localStorage.setItem('isLogin', this.isLogin);
-            this.$store.commit('login',{username:this.username,password:this.password,isLogin:this.isLogin})
-            this.$router.push('/')
+            if (this.username === '' || this.password === '') {
+                alert('账号或密码不能为空');
+            }else{
+                this.isLogin = !this.isLogin
+                console.log(this.isLogin);
+                localStorage.setItem('username', this.username);
+                localStorage.setItem('isLogin', this.isLogin);
+                this.$store.commit('login',{username:this.username,password:this.password,isLogin:this.isLogin})
+                this.$router.push('/')
+            } 
     }
         
     },
-    computed:{
-        ...mapState(['username']),
-     },
+    // computed:{
+    //     ...mapState(['username']),
+    //  },
 
 }
 </script>
